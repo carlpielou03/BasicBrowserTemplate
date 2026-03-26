@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         webView.webViewClient = object: WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
+                url?.run {
+                    urlEditText.setText(this)
+                }
             }
         }
 
