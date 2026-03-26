@@ -2,6 +2,7 @@ package edu.temple.basicbrowser
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.EditText
@@ -27,8 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         goButton.setOnClickListener {
            // CoroutineScope(Dispatchers.IO).launch {
-                val url: String = urlEditText.text.toString()
-                webView.loadUrl(url)
+            parseText()
+            webView.loadUrl(urlEditText.text.toString())
         //    }
         }
 
@@ -40,4 +41,13 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    fun parseText() {
+       val curText: String = urlEditText.text.toString()
+       if (curText.substring(0,8) != "https://") {
+           val newText = "https://$curText"
+           urlEditText.setText(newText)
+       }
+    }
+
 }
