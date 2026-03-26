@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
 
     fun parseText() {
        val curText: String = urlEditText.text.toString()
-       if (curText.substring(0,8) != "https://") {
-           val newText = "https://$curText"
-           urlEditText.setText(newText)
+       if (!curText.startsWith("https://") ) {
+           urlEditText.setText("https://$curText")
        }
     }
 
